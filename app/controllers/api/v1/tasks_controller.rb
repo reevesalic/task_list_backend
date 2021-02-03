@@ -2,7 +2,7 @@ class Api::V1::TasksController < ApplicationController
 
      def index
           @tasks = Task.all
-          render json: @tasks, status: 200
+          render json: TaskSerializer.new(tasks)
      end
 
      def show
