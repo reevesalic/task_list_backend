@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2021_01_31_182610) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "task"
+    t.string "description"
     t.string "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
