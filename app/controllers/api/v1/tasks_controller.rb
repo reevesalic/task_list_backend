@@ -1,19 +1,25 @@
 class Api::V1::TasksController < ApplicationController
 
      def index
-          @tasks = Task.all
+          tasks = Task.all
           render json: TaskSerializer.new(tasks)
      end
 
      def show
-          @task = Task.find(params[:id])
-          render json: @task, status: 200
+          task = Task.find(params[:id])
+          render json: task, status: 200
      end
 
      def create
-          @task = Task.create(task_params)
-          render json: @task, status: 200
+          byebug
+          task = Task.new(task_params)
+          byebug
+          if task.save
+          render json: TaskSerializer.new(task), status: :accepted
+          else
+               render json: {errors: task.errors.full_messages}, status: :unprocessible_entity
      end
+end
 
      def update
           @task = Task.find(params[:id])
