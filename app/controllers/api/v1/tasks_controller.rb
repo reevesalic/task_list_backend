@@ -11,9 +11,9 @@ class Api::V1::TasksController < ApplicationController
      end
 
      def create
-          byebug
+         
           task = Task.new(task_params)
-          byebug
+          
           if task.save
           render json: TaskSerializer.new(task), status: :accepted
           else
