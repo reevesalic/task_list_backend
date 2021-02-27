@@ -18,8 +18,8 @@ class Api::V1::TasksController < ApplicationController
           render json: TaskSerializer.new(task), status: :accepted
           else
                render json: {errors: task.errors.full_messages}, status: :unprocessible_entity
+          end
      end
-end
 
      def update
           @task = Task.find(params[:id])
@@ -32,6 +32,7 @@ end
           @task.delete
           render json: {taskId: @task.id}
      end
+     
      private
      def task_params
           params.require(:task).permit(:task, :description, :complete, :category_id)
