@@ -1,18 +1,24 @@
 class Api::V1::TasksController < ApplicationController
 
      def index
-          @tasks = Task.all
-          render json: @tasks, status: 200
+          tasks = Task.all
+          render json: TaskSerializer.new(tasks)
      end
 
      def show
-          @task = Task.find(params[:id])
-          render json: @task, status: 200
+          task = Task.find(params[:id])
+          render json: task, status: 200
      end
 
      def create
-          @task = Task.create(task_params)
-          render json: @task, status: 200
+         
+          task = Task.new(task_params)
+          
+          if task.save
+          render json: TaskSerializer.new(task), status: :accepted
+          else
+               render json: {errors: task.errors.full_messages}, status: :unprocessible_entity
+          end
      end
 
      def update
@@ -26,9 +32,10 @@ class Api::V1::TasksController < ApplicationController
           @task.delete
           render json: {taskId: @task.id}
      end
+     
      private
      def task_params
-          params.require(:task).permit(:task, :phone_number, :category_id)
+          params.require(:task).permit(:task, :description, :complete, :category_id)
      end
 end
 

@@ -1,24 +1,10 @@
-# README
+Task List
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application is a task list. It allows you to document tasks (or errands) you want to do. It allows you to create new tasks, mark the tasks as complete and delete the tasks you've completed. 
 
-Things you may want to cover:
+Installation
 
-* Ruby version
+git clone https://github.com/reevesalic/task_list_backend.git
 
-* System dependencies
 
-* Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
